@@ -22,7 +22,7 @@ As this is an exploratory project by nature, we have a **4 phased plan**, with p
 #### Classes
 1. **Person:** A person will be capable of interacting with other people. There will be a relationship bar, people will have perosnal preferences.
 2. **Buildings**: more buildings! There will be an option to rapidly build certain types of buildings.
-3.**Transportation:** Buses and bikes!
+3.**Transportation:** Buses and bikes! Wayfinding algorithm(not sure if it should be here, we'll see??)
 4. **Government:** tax collection, basic law and order
 #### GUI
 1. **Basic map:** shows where all buildings are!
