@@ -4,8 +4,11 @@ class Building {//defaults as residential housing, in future updates will add di
   int xpos;//location of building
   int ypos;//location of building
   int cap;//capacity of building
-  int typeCode;//type of building(to be used in future)
+  int typeCode;//type of building(to be used in future)0--Residential, 1--Road, 2--Commercial, 3--School,4--Park
   String buildingName;//name of building(if its a landmark)
+  Building() {
+    this.id=0;
+  }
   Building(int id) {//initializes a generic building
     this.id=id;
   }

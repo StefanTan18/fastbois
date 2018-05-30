@@ -3,6 +3,7 @@
 ArrayList<Building> structures=new ArrayList<Building>();
 int structureID=0;//this is the Nth structure 
 int xcor,ycor;//coordinate tracking system
+int buildingType;
 PFont f;
 
 void setup() {
@@ -30,11 +31,17 @@ void draw() {
   fill(0);
   textAlign(LEFT);
   text("City Simulation", 0, 25);
+ 
+  textAlign(LEFT);
+  text("Buildings", 0, 100);
+  text("Road",0,150);
+  text("Residence",0,200);
 }
 void mouseClicked() {
   if(picker()) {//if we are in the menu area
   
   menu();
+  constructor();
   }
   else if (cityCheck()) {//if there is nothing on site
     //makes new Building(residential)
@@ -61,6 +68,14 @@ boolean cityCheck() {
   }
   return true;
 }
+void constructor() {//constructs what needs to be constructed
+if(buildingType==1) {
+  Road newStruc=new Road(10);
+    structures.add(newStruc);//adds building
+  newStruc.drawRoad();
+    structureID++;
+}
+}
 int getXPos() {//gets "address of mouse"
   return xcor;
 }
@@ -76,18 +91,8 @@ boolean picker() {
 }
 //allows you to Build new building
 void menu() {
-  f = createFont("Arial", 16, true);
-    textFont(f, 16);
-  fill(0);
-  textAlign(LEFT);
-  text("Buildings", 0, 100);
-  text("Road",0,150);
-  text("Residence",0,200);
-  if(mouseX<200) {
-    Building newStruc=new Building(structureID,mouseX, mouseY, 1);
-    structures.add(newStruc);//adds building
-
-    structures.get(structureID).drawBuilding();
-    structureID++;
+ 
+  if(mouseX<200 && mouseY<175 && mouseY>125) {
+    buildingType=1;
   }
 }
