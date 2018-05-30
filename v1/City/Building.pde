@@ -10,18 +10,15 @@ class Building {//defaults as residential housing, in future updates will add di
     this.id=id;
   }
   //temporary cons
-  Building(int id, int pop) {
-    this.id=id;
-    for(int i=0; i<pop; i++) {
-      Person res=new Person();
-      residents.add(res);
-    }
+  Building(int id, int xcor, int ycor) {
+    this.id = id;
+    this.xpos = xcor;
+    this.ypos= ycor;
   }
+  
   void drawBuilding() {//makes a building
     fill(245,14,45);
-  rect(mouseX,mouseY,40,40);
-  xpos=mouseX;
-  ypos=mouseY;
+  rect(xpos,ypos,40,40);
   }
   int getxpos() {//returns "address" of place
     return xpos;
