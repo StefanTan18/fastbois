@@ -15,6 +15,8 @@ class Building {//defaults as residential housing, in future updates will add di
     this.xpos = xcor;
     this.ypos= ycor;
   }
+  Building(int id, int xcor, int ycor, int typeCode) {
+  }
   
   void drawBuilding() {//makes a building
     fill(245,14,45);
