@@ -47,3 +47,7 @@ yyyy-mm-dd
 <Member> :: <Thing member did.>
 <Member> :: <Thing member did.>
 ==============================================================
+2018-5-29:
+<James> :: started basic classes for creating Buildings, Person, and the City GUI class
+
+2018-5-30:
