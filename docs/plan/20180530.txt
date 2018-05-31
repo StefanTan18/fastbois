@@ -1,0 +1,17 @@
+fastbois - James Huang, Shafali Gupta, Stefan Tan
+APCS2 pd1
+2018-05-30
+
+Prioritization:
+Completing the City, Person, Road and Building class is the most crucial. The people will use the wayfinding algorithm to travel from building to building on the road. We will prioritize to functionality of this first before adding non essentials such as the type of building and transportation. This will be the most crucial job. 
+A working Person, Road, and Building are prerequisites for the City class, as the City class is the one that does the setup() and draw().   
+We could delegate individual classes to each other however, we would need to work on the City class and the wayfinding algorithm together. 
+
+Chronology:
+1. Building
+2. Person
+3. Road
+4. City
+5. Robustifying and making sure the code works. 
+6. Any other classes we would like to add in no particular order
+We should be done with the core classes by the this weekend. This would give us enough time to spread out the work and make sure that we have time to fix the code if there is an unexpected error. 

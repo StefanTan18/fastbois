@@ -12,8 +12,7 @@ void setup() {
   for (int i = 0; i < 100; i++) {
     xcor=(int) random(150,900);
     ycor=(int) random(150,900);
-    if(cityCheck()) {
-    
+    if(cityCheck()) {    
     Building b = new Building(i, xcor, ycor);
     structures.add(b);
     b.drawBuilding();
