@@ -34,6 +34,9 @@ class Building {//defaults as residential housing, in future updates will add di
   int getpop() {//gets number of residents
     return residents.size();
   }
+  int getType() {
+    return 0;
+  }
   void info() {
   }
   void setcap() {//sets capactiy of building

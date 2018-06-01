@@ -7,8 +7,19 @@ class Road extends Building {
   Road(int width) {//constructs a road of specified width. Wider==higher capacity
     this.width=width;
   }
-  void drawRoad() {//draws a road w/ specified width
-    mouseClicked();
+  void drawRoad(boolean isVertical, int x, int y) {//draws a road w/ specified width
+    if(isVertical) {
+      fill(255);
+      rect(x,0, width, y+1000);
+      xcor=x;
+      ycor=y;
+    }
+    else {
+      fill(255);
+      rect(150,y,y+1000,width);
+      xcor=x;
+      ycor=y;
+    }
   }
   void mouseClicked() {
    draw();
@@ -21,7 +32,16 @@ class Road extends Building {
     xcor=mouseX;
     ycor=mouseY;
     
-    rect(xcor,ycor,width,mouseY-ycor);
+    rect(xcor,ycor,width,mouseY);
     }
+   int getxpos() {
+    return xcor;
+   }
+   int getypos() {
+     return ycor;
+   }
+   int getType() {//tells program its a road
+     return 1;
+   }
   
 }
