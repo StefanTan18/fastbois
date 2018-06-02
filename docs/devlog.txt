@@ -1,5 +1,5 @@
 Fastbois
-James Huang
+James Huang, Shafali Gupta, Stefan Tan
 pd 1
 ---------------------
 A House of Cards
@@ -21,6 +21,7 @@ COOL STUFF LEARNED
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -We're gonna implement the GUI in phase 1 beacuse the program won't work without it.
+-We decided to make the buildings to first spawn randomly instead of having the user add the buildings manually.
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -51,3 +52,16 @@ yyyy-mm-dd
 <James> :: started basic classes for creating Buildings, Person, and the City GUI class
 
 2018-5-30:
+<James> :: Came up with methods to implement the setup and finished up Building.
+<Shafali> :: Made important insights in solving the error messages. 
+<Stefan> :: Driver for trio programming in class. 
+
+2018-5-31:
+<Shafali> :: Driver for trio programming in class.
+<Stefan> :: Tried to solve the problems that arised such as how the road such be positioned if the buildings are randomly placed.
+<James> :: Worked on the Road class and created a menu.
+
+2018-6-1:
+<James> :: Driver for trio programming in class. Decided that the road should be set up first in a grid system before the buildings.
+<Stefan> :: Pointed out problems that would arise from the way that we decided to implemented before.
+<Shafali> :: Added some improvements to the Road class. 
