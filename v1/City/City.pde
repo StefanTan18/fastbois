@@ -48,6 +48,8 @@ void buildingConstructor() {
   consY=0;//gets y position of most recent road
   consX=200;//gets x pos of most recent road
 for(Building a: structures) {
+  consY=0;//gets y position of most recent road
+  consX=200;//gets x pos of most recent road
     if(a.getID()==100) {
       //println("road");
       Road i=(Road) a;
@@ -59,8 +61,8 @@ for(Building a: structures) {
         xcor=consX;
         ycor=consY;
         for(int p=0; p<25; p++) {//constructs 25 buildings
-        xcor=consX;
-        ycor=consY;
+          xcor=consX;
+          ycor=consY;
         //println("crosstown");
         Building b=new Building(structureID,consX-40,i.getypos()-40);//constrcuts new building along x axis road, along upper side
         if(cityCheck()) {
