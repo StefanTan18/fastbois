@@ -3,14 +3,17 @@ APCS2 pd1
 2018-06-04
 
 Prioritization:
-We have completed the setup of the buildings and the roads.
-The most crucial step now is to complete the setup of the people and allow them to move around on the road.
-We are also going to start working on the wayfinding algorithm that would involve backtracking. The people would travel only on the road and they would travel from their location to the a location where they would have to go, which is represented by an ID number that given to each strucure. We will use the ID number to identify each type of structure. We would need to work on the wayfinding algorithm together.
+We have completed the initial setup procedures of the buildings and the roads.
+The most crucial step now is to complete the setup of the people and allow them to move around on the road. They will be assigned residential house and commercial workplace.
+We are also going to start working on the wayfinding algorithm that would involve backtracking. The people would travel only on the road and they would travel from their location to the a location where they would have to go, which is represented by an ID number that given to each strucure. We will use the ID number to identify each type of structure(and also utilize our master list of structure to find the locations of each structure). We would need to work on the wayfinding algorithm together, and we would need to implement our data structure for the represntation of a road.
 Once we get this core functionality done, we are able to add more types of buildings and allow the user to interact with GUI by adding buildings or people to where they desire. 
 
 Chronology:
 1. Person class
-2. Wayfinding Algorithm (Make sure the people are able to travel freely first)
+2. Wayfinding Algorithm (Make sure the people are able to travel freely first)(and utilizing capacity queues on the road)
+2b. government class, giving crucial stats and insights
 3. Extra Classes that we would like to add.
+4. more user interaction with the world
+5. enhancements to existing classes
 
-The wayfinding algorithm is expected to take a while and we expect to spend the most time on this part and we are prepared for setbacks that make occur when trying to implement this algorithm.
+The wayfinding algorithm is expected to take a while and we expect to spend the most time on this part and we are prepared for setbacks that make occur when trying to implement this algorithm. We will also have to make it robust, to account for future additions to transportation options and in the far, far future, "personal" preferences
