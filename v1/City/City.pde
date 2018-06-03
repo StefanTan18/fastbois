@@ -10,40 +10,89 @@ void setup() {
   size(1000, 1000);
   background(0);
   //road setup and spawn algorithm
-  int seedX=(int) random(150,250);
-  int seedY= (int) random(150,250);
-  int spacing= (int) random(40,160);
-  for(int j=0; j<25; j++) {//generates a random grid of roads
-    Road newRoad=new Road(5);
-    newRoad.drawRoad(true,seedX,seedY);
-    structures.add(newRoad);
-    Road crosstown=new Road(5);
-    crosstown.drawRoad(false,seedX,seedY);
-    structures.add(crosstown);
-    seedX+=spacing;
-    seedY+=spacing;
-    
-    
-  }
-  for (int i = 0; i < 100; i++) {
-    xcor=(int) random(150,900);
-    ycor=(int) random(150,900);
-    if(cityCheck()) {    
-    Building b = new Building(i, xcor, ycor);
-    structures.add(b);
-    b.drawBuilding();
-    }
-    else {
-      i--;
-    }
-  }
-
+  genWorld();
   mouseClicked();
   fill(255);
   rect(0, 0, 150, 250);
  
   f = createFont("Arial", 16, true);
 }
+void genWorld() {
+  int seedX=(int) random(150,250);
+  int seedY= (int) random(150,250);
+  int spacing= (int) random(80,160);
+  int cons,consY;
+  for(int j=0; j<25; j++) {//generates a random grid of roads
+    Road newRoad=new Road(5);//make a road of width 5
+    newRoad.drawRoad(true,seedX,seedY);//Y axis road
+    structures.add(newRoad);
+    Road crosstown=new Road(5);//make a road of width 5
+    crosstown.drawRoad(false,seedX,seedY);//X axis road
+    structures.add(crosstown);
+    spacing= (int) random(100,240);
+    seedX+=spacing;
+    seedY+=spacing;
+    
+  }//construct roads first
+  buildingConstructor();//constructs buildings
+  
+    
+  
+    
+    
+  }
+
+void buildingConstructor() {
+  int consX,consY;
+  ArrayList<Building> temp=new ArrayList<Building>();
+  consY=0;//gets y position of most recent road
+  consX=200;//gets x pos of most recent road
+for(Building a: structures) {
+    if(a.getID()==100) {
+      //println("road");
+      Road i=(Road) a;
+      //println("numero");
+      //constructor for x-axis roads
+      if(!(i.vertical())){
+        consY=a.getypos();
+        println(consY);
+        xcor=consX;
+        ycor=consY;
+        for(int p=0; p<25; p++) {//constructs 25 buildings
+        xcor=consX;
+        ycor=consY;
+        //println("crosstown");
+        Building b=new Building(structureID,consX-40,i.getypos()-40);//constrcuts new building along x axis road, along upper side
+        if(cityCheck()) {
+          //println("building");
+           temp.add(b);
+          b.drawBuilding();
+        }
+        Building d=new Building(structures.size(),consX-40,i.getypos()+i.getWidth());//constructs building on other side   
+        if (cityCheck()) {
+        temp.add(d);
+        d.drawBuilding();
+        
+        }
+        consX+=40;
+      }
+      }
+      //same concept for y axis roads
+      /*Building c=new Building(structures.size(), crosstown.getxpos()-40,cons-40);//constrcuts new building along x axis road
+      Building e=new Building(structures.size(), crosstown.getxpos()+i.getWidth(),cons-40);
+      structures.add(c);
+      c.drawBuilding();
+      structures.add(e);
+      e.drawBuilding();*/
+    
+    }
+}
+for(Building james: temp) {
+  structures.add(james);
+  
+}
+}
+
 void draw() {
   textFont(f, 16);
   fill(0);
@@ -83,16 +132,16 @@ boolean cityCheck() {
   for (Building str : structures) {
     //special case for road
     if(str.getType()==1) {
-      int tempX=str.getxpos();
-      int tempY=str.getypos();
-      for(int i=tempX; i<1000; i+=10) {
-        if (abs(tempX-this.getXPos())<10) {
-          ret=false;
-      }
-      else if(abs(str.getypos()-this.getYPos())<40) {
+      Road ster=(Road) str;
+      int word=ster.getWidth();
+      if(ster.vertical()&&((ster.getxpos()-this.getXPos()>-39 && this.getXPos()>ster.getxpos()) || (ster.getxpos()-this.getXPos()<11 && ster.getxpos()>this.getXPos()))) {
+        println("fail");
         ret=false;
       }
-    }
+      else if((ster.getypos()-this.getYPos()>-39 && this.getYPos()>ster.getypos()) || (ster.getypos()-this.getYPos()<11 && ster.getypos()>this.getXPos())) {
+        println("faily");
+        ret=false;
+      }
     }
     else if (abs(str.getxpos()-this.getXPos())<40 && abs(str.getypos()-this.getYPos())<40) {//if we are in range of building
       ret=false;

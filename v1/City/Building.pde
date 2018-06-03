@@ -41,4 +41,7 @@ class Building {//defaults as residential housing, in future updates will add di
   }
   void setcap() {//sets capactiy of building
   }
+  int getID() {
+    return 0;
+  }
 }
