@@ -5,6 +5,8 @@ int structureID=0;//this is the Nth structure
 int xcor,ycor;//coordinate tracking system
 int buildingType;
 PFont f;
+PGraphics pg;
+
 
 void setup() {
   size(1000, 1000);
@@ -12,8 +14,8 @@ void setup() {
   //road setup and spawn algorithm
   genWorld();
   mouseClicked();
-  fill(255);
-  rect(0, 0, 150, 250);
+   fill(255);
+   rect(0, 0, 150, 250);
  
   f = createFont("Arial", 16, true);
 }
@@ -99,18 +101,19 @@ void draw() {
   textFont(f, 16);
   fill(0);
   textAlign(LEFT);
-  text("City Simulation", 0, 25);
+   text("City Simulation", 0, 25);
  
-  textAlign(LEFT);
-  text("Buildings", 0, 100);
-  text("Road",0,150);
-  text("Residence",0,200);
+   textAlign(LEFT);
+   text("Add people", 0, 100);
+   text("Road",0,150);
+   text("Residence",0,200);
 }
 void mouseClicked() {
   if(picker()) {//if we are in the menu area
   
   menu();
-  constructor();
+  
+  //constructor();
   }
   else if (cityCheck()) {//if there is nothing on site
     //makes new Building(residential)
@@ -137,11 +140,11 @@ boolean cityCheck() {
       Road ster=(Road) str;
       int word=ster.getWidth();
       if(ster.vertical()&&((ster.getxpos()-this.getXPos()>-39 && this.getXPos()>ster.getxpos()) || (ster.getxpos()-this.getXPos()<11 && ster.getxpos()>this.getXPos()))) {
-        println("fail");
+        //println("fail");
         ret=false;
       }
       else if((ster.getypos()-this.getYPos()>-39 && this.getYPos()>ster.getypos()) || (ster.getypos()-this.getYPos()<11 && ster.getypos()>this.getXPos())) {
-        println("faily");
+        //println("faily");
         ret=false;
       }
     }
@@ -175,7 +178,17 @@ boolean picker() {
 //allows you to Build new building
 void menu() {
  
-  if(mouseX<200 && mouseY<175 && mouseY>125) {
+  if(mouseX<200 && mouseY>75 && mouseY<125) {
     buildingType=1;
+    println("pick where to put human");
+    textFont(f, 16);
+    
+    
+    fill(0);
+    textAlign(LEFT);
+    text("fill city", 0, 125);
+    
+    
   }
+  
 }
