@@ -9,6 +9,6 @@ With our project, we aim to discover and answer that question with our **city si
 ## Our Goal
 The end goal, of course, is to create a reasonably accurate simulation that takes into account many factors, with a simple GUI output using processing and backend usage of data structures(such as a doubly linked list or a heap), to accurate visualize links in the complex web of a city. 
 ## Launch Instructions
-Runs using the GUI made from Processing. Click the run button of the processing file. 
+Runs using the display window from Processing. Open City.pde and click the run button that appears when the processing file is opened. 
 
 
