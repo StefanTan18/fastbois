@@ -1,4 +1,5 @@
 class Building {//defaults as residential housing, in future updates will add different types(sub classes)
+PGraphics gui;//gui representation
   ArrayList<Person> residents=new ArrayList<Person>();//directory of residents
   int id;//id of building
   int xpos;//location of building
@@ -17,11 +18,13 @@ class Building {//defaults as residential housing, in future updates will add di
     this.id = id;
     this.xpos = xcor;
     this.ypos= ycor;
+    pg=createGraphics(40,40);
   }
   Building(int id, int xcor, int ycor, int typeCode) {
   }
   
   void drawBuilding() {//makes a building
+  
     fill(245,14,45);
   rect(xpos,ypos,40,40);
   }
