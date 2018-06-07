@@ -9,6 +9,6 @@ With our project, we aim to discover and answer that question with our **city si
 ## Our Goal
 The end goal, of course, is to create a reasonably accurate simulation that takes into account many factors, with a simple GUI output using processing and backend usage of data structures(such as a doubly linked list or a heap), to accurate visualize links in the complex web of a city. 
 ## Launch Instructions
-1. Clone this repo. To clone this repo, open a terminal session and navigate to the folder you want this repo to located in. Then clone with SSH by typing this `<addr>` $ git clone git@github.com:StefanTan18/fastbois.git 
+1. Clone this repo. To clone this repo, open a terminal session and navigate to the folder you want this repo to located in. Then clone with SSH by typing this ``` $ git clone git@github.com:StefanTan18/fastbois.git ``` 
 
 
