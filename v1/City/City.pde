@@ -8,6 +8,8 @@ int buildingType;
 PFont f;
 PGraphics pg;
 PGraphics ab;
+boolean menuCond=true;
+Building interact;
 
 
 void setup() {
@@ -50,7 +52,7 @@ void buildingConstructor() {
     Building a=structures.get(q);
     consY=0;//gets y position of most recent road
     consX=200;//gets x pos of most recent road
-    if (a.getID()==100) {
+    if (a.getType()==100) {
       Road i=(Road) a;//to access methods in road
       //constructor for x-axis roads
       consX=a.getxpos();
@@ -58,8 +60,9 @@ void buildingConstructor() {
       for (int p=0; p<25; p++) {//constructs 25 buildings
         xcor=consX;
         ycor=consY;
-        rand=(int) random(0, 5);
+        rand=(int) random(0, 4);
         Building b=new Building(structureID, i.getxpos()-60, consY, rand, 60);//constrcuts new building along x axis road, along upper side
+        structureID++;
         if (cityCheck()) {
           structures.add(b);
           b.drawBuilding();
@@ -69,6 +72,7 @@ void buildingConstructor() {
           b.demolishBuilding();
         }
         Building d=new Building(structures.size(), i.getxpos()+i.getWidth(), consY, rand, 60);//constructs building on other side   
+        structureID++;
         if (cityCheck()) {
           structures.add(d);
           d.drawBuilding();
@@ -95,27 +99,37 @@ void draw() {
   text("Residence", 0, 200);
   //pg.beginDraw();
 }
-void mouseClicked() {
+void mouseClicked() {//has all the menu instructions
+  
   ab=createGraphics(150, 500);
-  if(mouseX<250 && mouseY>400) {
-    println("test");
-          ab.beginDraw();
+  if( mouseY>300 && mouseX<250 && mouseY<400) {
+          println("adding...");
+          interact.addPeople(20);
+          statMenu(interact);
           
-          ab.clear();
-          ab.endDraw();
-  }
-  else if (cityCheck()) {//if there is nothing on site
-    //makes new Building(residential)
-    Building newStruc=new Building(structureID, mouseX, mouseY);
-    structures.add(newStruc);//adds building
-
-    structures.get(structureID).drawBuilding();
-    structureID++;
-  } else {//otherwise, display statistics
+        }
+   else if(mouseY>200 && mouseX<250 && mouseY<300) {
+     interact.demolishBuilding();
+   }
+   else {
     for (Building str : structures) {
-      if (abs(str.getxpos()-mouseX)<str.getSize() && abs(str.getypos()-mouseY)<str.getSize()) {
+     if (abs(str.getxpos()-mouseX)<str.getSize() && abs(str.getypos()-mouseY)<str.getSize()) {
         println(str.getpop());//this function allows us to use the menu (which will be on the upper left corner), and get stats, modify the population etc.
-        f = createFont("Arial", 16, true);
+        interact=str;
+        statMenu(interact);
+        
+     }
+    }
+        //mousePressed();
+ 
+          
+    
+      
+    
+  }
+}
+void statMenu(Building str) {
+  f = createFont("Arial", 16, true);
         PFont g=createFont("Arial", 40, true);
         ab.beginDraw();
         ab.background(255);
@@ -125,22 +139,14 @@ void mouseClicked() {
         ab.text("Stats for building"+str.getID(), 0, 16);
         ab.text("remove building", 0, 45);
         ab.text("population"+str.getpop(), 0, 60);
-        ab.text("capacity", 0, 100);
+        ab.text("capacity"+str.getCap(), 0, 100);
         ab.text("add people",0,120);
         ab.textFont(g, 40);
         ab.text("Exit editor", 0, 484);
         ab.endDraw();
         image(ab, 0, 250);
-        //mousePressed();
-        if( mouseY>200) {
-          println("adding...");
-          str.addPeople(20);
-        }
-          
-     
-      }
-    }
-  }
+        menuCond=false;
+   
 }
 //checks to see if there is something occupying the current space
 boolean cityCheck() {
@@ -175,14 +181,6 @@ boolean cityCheck() {
     }
   }
   return ret;
-}
-void constructor() {//constructs what needs to be constructed
-  if (buildingType==1) {
-    Road newStruc=new Road(10);
-    structures.add(newStruc);//adds building
-    //newStruc.drawRoad();
-    structureID++;
-  }
 }
 int getXPos() {//gets "address of mouse"
   return xcor;
