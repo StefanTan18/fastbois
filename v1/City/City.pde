@@ -42,7 +42,7 @@ void genWorld() {
 
 void buildingConstructor() {
   int consX, consY,rand;
-  ArrayList<Building> temp=new ArrayList<Building>();
+  //ArrayList<Building> temp=new ArrayList<Building>();
   consY=0;//gets y position of most recent road
   consX=200;//gets x pos of most recent road
   for (int q=0; q<structures.size(); q++) {//goes through list of structures
@@ -52,11 +52,11 @@ void buildingConstructor() {
     if (a.getID()==100) {
       Road i=(Road) a;//to access methods in road
       //constructor for x-axis roads
-      if (!(i.vertical())) {
+      /*if (!(i.vertical())) {
         consY=a.getypos();
         for (int p=0; p<25; p++) {//constructs 25 buildings
         rand=(int) random(0,5);
-          Building b=new Building(structureID, consX, i.getypos()-40,rand,40);//constrcuts new building along x axis road, along upper side
+          Building b=new Building(structureID, consX, i.getypos()-40,rand,60);//constrcuts new building along x axis road, along upper side
           xcor=consX;
           ycor=consY;
           if (cityCheck()) {//if nothing is occupying, then...
@@ -74,9 +74,9 @@ void buildingConstructor() {
               d.addPeople(40);
           }
           consX+=40;
-        }
-      }
-      else {//constrcuting for y axis road
+        } 
+      } 
+      else {//constrcuting for y axis road */
        consX=a.getxpos();
         
         for (int p=0; p<25; p++) {//constructs 25 buildings
@@ -100,8 +100,7 @@ void buildingConstructor() {
       }
     }
   }
-}
-
+//}
 void draw() {
   textFont(f, 16);
   fill(0);
@@ -143,21 +142,30 @@ boolean cityCheck() {
     //special case for road
     if (str.getType()==100) {
       Road ster=(Road) str;
-      int word=ster.getWidth();
-      if (ster.vertical()&&((ster.getxpos()-this.getXPos()>-39 && this.getXPos()>ster.getxpos()) || (ster.getxpos()-this.getXPos()<word && ster.getxpos()>this.getXPos()))) {
-        //println("fail");
-        ret=false;
-      } else if ((ster.getypos()-this.getYPos()>-39 && this.getYPos()>ster.getypos()) || (ster.getypos()-this.getYPos()<word && ster.getypos()>this.getXPos())) {
-        //println("faily");
-        ret=false;
-      }
-    }
-    else if (abs(str.getxpos()-this.getXPos())<str.getSize() && abs(str.getypos()-this.getYPos())<str.getSize()) {//if we are in range of building
+    //  int word=ster.getWidth();
+    //  if (ster.vertical()&&((ster.getxpos()-this.getXPos()>-50 && this.getXPos()>ster.getxpos()) || (ster.getxpos()-this.getXPos()<word && ster.getxpos()>this.getXPos()))) {
+    //    //println("fail");
+    //    ret=false;
+    //  } else if ((ster.getypos()-this.getYPos()>-50 && this.getYPos()>ster.getypos()) || (ster.getypos()-this.getYPos()<word && ster.getypos()>this.getXPos())) {
+    //    //println("faily");
+    //    ret=false;
+    //  }
+    //}
+    //else if (abs(str.getxpos()-this.getXPos())<str.getSize() && abs(str.getypos()-this.getYPos())<str.getSize()) {//if we are in range of building
+    //  println("failb");
+    //  ret=false;
+    //}
+    if (this.getXPos() == ster.getxpos() || this.getYPos() == ster.getypos() || abs(this.getXPos() -ster.getxpos()) <60 || abs(this.getYPos()- ster.getypos()) <60){
+    ret = false; }
+  }
+    if (abs(str.getxpos()-this.getXPos())<str.getSize()+5 && abs(str.getypos()-this.getYPos())<str.getSize()+5) {//if we are in range of building
       println("failb");
       ret=false;
     }
-  }
-  return ret;
+    else {ret = true; }
+ 
+}
+return ret;
 }
 void constructor() {//constructs what needs to be constructed
   if (buildingType==1) {
