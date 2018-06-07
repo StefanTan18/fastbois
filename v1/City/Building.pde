@@ -73,8 +73,12 @@ PGraphics pg;//gui representation
   void setcap() {//sets capactiy of building
   }
   int getID() {
-    return 0;
+    return id;
   }
   void demolishBuilding() {
+    pg.beginDraw();
+    pg.clear();
+    pg.endDraw();
+    println("building demolished");
   }
 }
