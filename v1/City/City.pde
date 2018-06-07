@@ -63,14 +63,15 @@ void buildingConstructor() {
             structureID++;
             structures.add(b);
             b.drawBuilding();//constcut building
-            b.addPeople(40);
+              b.addPeople(40);
+            
           }
           Building d=new Building(structureID, consX, i.getypos()+i.getWidth(),rand,40);//constructs building on other side   
           if (cityCheck()) {
             structureID++;
             structures.add(d);
             d.drawBuilding();
-            d.addPeople(40);
+              d.addPeople(40);
           }
           consX+=40;
         }
@@ -86,13 +87,13 @@ void buildingConstructor() {
           if (cityCheck()) {
             structures.add(b);
             b.drawBuilding();
-            b.addPeople(40);
+              b.addPeople(40);
           }
           Building d=new Building(structures.size(),i.getxpos()+i.getWidth(), consY,rand,60);//constructs building on other side   
           if (cityCheck()) {
             structures.add(d);
             d.drawBuilding();
-            d.addPeople(40);
+              d.addPeople(40);
           }
           consY+=40;
         }

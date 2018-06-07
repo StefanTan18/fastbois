@@ -59,11 +59,13 @@ PGraphics pg;//gui representation
     return size;
   }
   void addPeople(int population) {
+    if (typeCode ==0){
     for(int i=0; i< population; i++) {
       Person newGuy=new Person();
       residents.add(newGuy);
       newGuy.setAddress(this);
       newGuy.drawPeople();
+    }
     }
   }
   void info() {
