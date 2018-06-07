@@ -4,6 +4,7 @@ class Person {
   //attributes
   Building address;
   Building work;
+  ArrayList<Building> frequentDestinations;
   int income, age,genderCode, prefCode, happiness, raceCode;//instance vars
   int xcor,ycor;
   
@@ -21,13 +22,38 @@ class Person {
   }
   //methods
   void drawPeople() {
+    fill(0);
     ellipse(xcor,ycor,2,2);
   }
   void setAddress(Building newAddress) {//sets new house
     address=newAddress;
-    xcor=newAddress.getxpos();
-    ycor=newAddress.getypos();
+    int randomGen=(int) random(0,newAddress.getSize());
+    int randomY=(int) random(0,newAddress.getSize());
+    xcor=newAddress.getxpos()+randomGen;
+    ycor=newAddress.getypos()+randomY;
   }
-  //void wayfind() 
-  //int moveLinear()
+  /*
+  boolean wayfind(Building dest) {//find the nearet road, travel on the road via. bus, or car or walking depending on mood
+    if(abs(xcor-dest.getxpos())<40 && abs(ycor-dest.getypos())<40) {
+      return true;
+    }
+    for(Building i: structures) {
+      if(i.getID()==100) {
+        (Road)i.isVertical();
+      }
+    }
+    wayfindHelper(nextRoad);
+  }
+  boolean wayfindHelper(Road a) {
+    if(abs(xcor-dest.getxcor())<40 && abs(ycor-dest.getycor())<40) {
+      //we are at the destination
+      return true;
+    }
+    else if(abs(xcor-dest.getxcor())<40) {
+      //find nearest y-axis road
+      wayfindHelper(a);
+      
+  }
+}
+*/
 }

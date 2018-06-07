@@ -46,7 +46,7 @@ class Road extends Building {
     return ycor;
   }
   int getType() {//tells program its a road
-    return 1;
+    return 100;
   }
   int getWidth() {
     return width;

@@ -1,12 +1,12 @@
-class Building {//defaults as residential housing, in future updates will add different types(sub classes)
-PGraphics gui;//gui representation
+class Building {//generic building, can be typed as something else!
+PGraphics pg;//gui representation
   ArrayList<Person> residents=new ArrayList<Person>();//directory of residents
-  int id;//id of building
-  int xpos;//location of building
-  int ypos;//location of building
-  int cap;//capacity of building
-  int typeCode;//type of building(to be used in future)0--Residential, 1--Road, 2--Commercial, 3--School,4--Park
-  String buildingName;//name of building(if its a landmark)
+  protected int id;//id of building
+  protected int xpos;//location of building
+  protected int ypos,size;//location,size of building
+  protected int cap;//capacity of building
+  protected int typeCode;//type of building(to be used in future)0--Residential, 100--Road, 2--Commercial, 3--park,4--school
+  protected String buildingName;//name of building(if its a landmark)
   Building() {
     this.id=0;
   }
@@ -20,13 +20,28 @@ PGraphics gui;//gui representation
     this.ypos= ycor;
     pg=createGraphics(40,40);
   }
-  Building(int id, int xcor, int ycor, int typeCode) {
+  Building(int id, int xcor, int ycor, int typeCode, int size) {
+    this(id,xcor,ycor);
+    this.typeCode=typeCode;
+    this.size=size;
+    pg=createGraphics(size,size);
   }
   
   void drawBuilding() {//makes a building
-  
-    fill(245,14,45);
-  rect(xpos,ypos,40,40);
+  pg.beginDraw();
+  if(typeCode==2) {
+    pg.background(0,255,255);
+  }
+  else if(typeCode==3) {
+    
+     pg.background(0,128,0);
+  }
+  else {
+    pg.background(255,0,0);
+  }
+  pg.noFill();
+  pg.endDraw();
+  image(pg,xpos,ypos);
   }
   int getxpos() {//returns "address" of place
     return xpos;
@@ -38,7 +53,18 @@ PGraphics gui;//gui representation
     return residents.size();
   }
   int getType() {
-    return 0;
+    return typeCode;
+  }
+  int getSize() {
+    return size;
+  }
+  void addPeople(int population) {
+    for(int i=0; i< population; i++) {
+      Person newGuy=new Person();
+      residents.add(newGuy);
+      newGuy.setAddress(this);
+      newGuy.drawPeople();
+    }
   }
   void info() {
   }
@@ -46,5 +72,7 @@ PGraphics gui;//gui representation
   }
   int getID() {
     return 0;
+  }
+  void demolishBuilding() {
   }
 }
