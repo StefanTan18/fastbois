@@ -69,7 +69,7 @@ PGraphics pg;//gui representation
     return cap;
   }
   void addPeople(int population) {
-    if(typeCode==0) {
+    if(typeCode ==0) {
     for(int i=0; i< population; i++) {
       Person newGuy=new Person();
       residents.add(newGuy);

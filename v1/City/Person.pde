@@ -32,8 +32,72 @@ class Person {
     xcor=newAddress.getxpos()+randomGen;
     ycor=newAddress.getypos()+randomY;
   }
-  /*
-  boolean wayfind(Building dest) {//find the nearet road, travel on the road via. bus, or car or walking depending on mood
+  void moveXRight(){
+  xcor++;
+  }
+  void moveXLeft(){
+  xcor--;
+  }
+  void moveYUp{
+  ycor++;
+  }
+  void moveYDown(){
+  ycor--;
+  }
+  
+  Road nearestYRoad(){
+  Road nearest;
+  int min = 1000000;
+  for(Building a: structures){
+   if (a.getType() == 100){
+     if (min > (int) dist(a.getXPos(), a.getYPos(), address.getXPos(), address.getYPos())){
+       min = (int) dist(a.getXPos(), a.getYPos(), address.getXPos(), address.getYPos();
+       nearest = a;
+       }
+       }
+       }
+       while(this.xcor != nearest.getXPos()){
+       this.moveXRight();
+       this.drawPeople();
+       }
+       return nearest; 
+      }
+       
+ Road nearestXRoad(){
+   Road nearest;
+   int min = 1000000;
+   for(Building a: structures){
+   if (a.getType() == 100 && !a.vertical()){
+     if (min > (int) dist(a.getXPos(), a.getYPos(), this.xpos, this.ypos)){
+       min = (int) dist(a.getXPos(), a.getYPos(), this.xpos, this.ypos);
+       nearest = a;
+       }
+       }
+       }
+       return nearest;
+       }
+  
+  boolean wayfinder(Building dest){
+  this.nearestYRoad(); 
+  while(this.ycor != dest.getYPos()){
+  if (this.ycor < dest.getYPos()){
+          this.moveYDown(); 
+       }
+  else {
+  this.moveYUp(); }
+  while(abs(this.xcor - dest.getXPos()) > 60){
+  if (this.ycor == nearestXRoad().getYPos()){
+      if (this.xcor < dest.getXPos()){
+          this.moveXRight(); }
+      else{
+          this.moveXLeft(); }
+          }
+          } 
+  }
+  return true;
+  }
+   
+/*  boolean wayfind(Building dest) {//find the nearest road, travel on the road via. bus, or car or walking depending on mood
     if(abs(xcor-dest.getxpos())<40 && abs(ycor-dest.getypos())<40) {
       return true;
     }
@@ -45,7 +109,7 @@ class Person {
     wayfindHelper(nextRoad);
   }
   boolean wayfindHelper(Road a) {
-    if(abs(xcor-dest.getxcor())<40 && abs(ycor-dest.getycor())<40) {
+    if(abs(xcor-dest.getxcor())<60 && abs(ycor-dest.getycor())<40) {
       //we are at the destination
       return true;
     }
@@ -54,6 +118,7 @@ class Person {
       wayfindHelper(a);
       
   }
-}
-*/
+} */
+
+
 }
