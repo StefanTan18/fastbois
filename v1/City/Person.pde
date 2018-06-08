@@ -1,6 +1,5 @@
 class Person {
   //id of person(static??)
-  int id;
   // public final static int id_attrib=0;
   //attributes
   Building address;
@@ -8,11 +7,9 @@ class Person {
   ArrayList<Building> frequentDestinations;
   int income, age, genderCode, prefCode, happiness, raceCode;//instance vars
   int xcor, ycor;
-  //Tree friendNetwork;//visualization of closest connections/social network(will determine where he/she goes
 
   String profession, name;//some fun stuff we will add later on
   Person() {//generates a new person
-  id=0;
     income=0;
     age=0;
     name="Carl";//will be replaced with a name generator
@@ -22,19 +19,18 @@ class Person {
     raceCode=0;
     xcor=8000;
     ycor=9000;
-    for(Building i: structures) {
-      if(i.typeCode==2 && i.getpop()<i.getCap()) {
-        income=(int)(random (0,30000));
-        work=i;
-      }
-    }
   }
-  void personInteract() {
-  }
-  //methods for moving ppl around
+  //methods
   void drawPeople() {
     fill(255);
     ellipse(xcor, ycor, 2, 2);
+  }
+  void setWork(Building wo) {
+    work=wo;
+    income=wo.offer;
+  }
+  int getID() {
+    return 0;
   }
   void setAddress(Building newAddress) {//sets new house
     address=newAddress;
@@ -42,10 +38,6 @@ class Person {
     int randomY=(int) random(0, newAddress.getSize());
     xcor=newAddress.getxpos()+randomGen;
     ycor=newAddress.getypos()+randomY;
-  }
-  void setWork(Building p) {
-    work=p;
-    income=(int)(random(0,30000));
   }
   void moveXRight() {
     this.xcor++;
@@ -64,14 +56,14 @@ class Person {
     this.drawPeople();
   }
 
-  Road nearestYRoad() {//finds road closest to a building
+  Road nearestYRoad() {
     Road nearest = new Road(5);
     int min = 1000000;
     for (Building a : structures) {//search for roads
       if (a.getType() == 100) {//if the object is a road
       Road p=(Road) a;
       
-        if (p.vertical() && min > (int) dist(a.getxpos(), a.getxpos(), address.getxpos(), address.getypos())) {//searches through each road, and makes sure its a Y  axis road
+        if (p.vertical() && min > (int) dist(a.getxpos(), a.getxpos(), address.getxpos(), address.getypos())) {//searches through each road, and makes sure
           min = (int) dist(a.getxpos(), a.getxpos(), address.getxpos(), address.getypos());
           nearest = (Road) a;
         }
@@ -98,13 +90,10 @@ class Person {
     }
     return nearest;
   }
-  int getID() {
-    return id;
-  }
 
   void wayfinder(Building dest) {
     this.nearestYRoad(); 
-     /*while (this.ycor != dest.getypos()) {
+     /*whil (this.ycor != dest.getypos()) {
      if (this.ycor < dest.getypos()) {
      this.moveYDown();
      } else {
@@ -144,7 +133,9 @@ class Person {
    
    }
    } */
-   boolean go() {//will the person go? We shall see 
+
+
+boolean go() {//will the person go? We shall see 
      if(time>=800 && time<=1200) {
        return true;
      }

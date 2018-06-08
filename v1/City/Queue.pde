@@ -1,6 +1,7 @@
-public class Queue<T>
+/*public class Queue<T>
 {
- /* //this is a modified queue. IF the queue is full, it will act like a normal queue.
+  //no time to implement transportation, can't use road-> can't use queue-> can't use DLLNODE
+  //this is a modified queue. IF the queue is full, it will act like a normal queue.
   //However, if the queue is empty, items will be able to jump up to the closest one the car is able to. In short, with heavy traffic, this acts like a queue, but 
   //in times of lighter traffic, cars can jump!
   //instance variables
@@ -110,4 +111,3 @@ public class Queue<T>
     }
     return foo;
   }//end toString()*/
-}
