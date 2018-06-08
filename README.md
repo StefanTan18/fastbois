@@ -14,7 +14,7 @@ Our project will be using data structures to store the many Buildings and Person
 The end goal, of course, is to create a reasonably accurate simulation that takes into account many factors, with a simple GUI output using processing and backend usage of data structures(such as a doubly linked list or a heap), to accurate visualize links in the complex web of a city. 
 ## Launch Instructions
 1. Clone this repo. To clone this repo, open a terminal session and navigate to the folder you want this repo to located in. Then clone with SSH by typing in ```$ git clone git@github.com:StefanTan18/fastbois.git```
-2. Navigate to the City directory.
+2. Navigate to the City directory(in the v1 folder)
 3. Open City.pde using the Processing program.
 4. Press the Play button once the window opens. 
-5. Enjoy and watch the daily routines of a city occur right before your eyes.
+5. Enjoy and watch the daily routines of a city occur right before your eyes. Interact with the city by adding buildings, giving people jobs, increasing the income etc.
