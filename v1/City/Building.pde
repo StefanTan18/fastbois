@@ -22,11 +22,11 @@ PGraphics pg;//gui representation
   }
   Building(int id, int xcor, int ycor, int typeCode, int size) {
     this(id,xcor,ycor);
-    if(typeCode==1 || (typeCode<4 && typeCode!=100)) {
-    this.typeCode=typeCode;
+    if(typeCode==1 || (typeCode>3 && typeCode!=100)) {
+    this.typeCode=0;
     }
     else {
-      this.typeCode=0;
+      this.typeCode=typeCode;
     }
     this.size=size;
     pg=createGraphics(size,size);
@@ -72,12 +72,35 @@ PGraphics pg;//gui representation
       Person newGuy=new Person();
       residents.add(newGuy);
       people.add(newGuy);
+      
       newGuy.setAddress(this);
+      newGuy.drawPeople();
     }
     }
   }
  
-  void info() {
+  void statsWindow() {
+    pg=createGraphics(300,300);
+    pg.beginDraw();
+    pg.background(255);
+  pg.textFont(f, 16);
+  pg.fill(0);
+  pg.textAlign(LEFT);
+  pg.text("Stats for building "+this.getID(), 0, 16);
+  pg.text("remove building", 0, 45);
+  pg.text("building type: "+this.getType(),0,60);
+  pg.text("population"+this.getpop(), 0, 75);
+  pg.text("capacity"+this.getCap(), 0, 100);
+  pg.text("add people", 0, 120);
+  pg.text("manage people",0,140);
+  int format=156;
+  int formatx=0;//for formatting list of ppl
+  for(Person i:residents) {
+    pg.text(i.name+" "+i.getID(),0,140);
+  }
+  
+  pg.endDraw();
+  image(pg, 300, 300);
   }
   void setcap() {//sets capactiy of building
   }
@@ -88,6 +111,6 @@ PGraphics pg;//gui representation
     pg.beginDraw();
     pg.clear();
     pg.endDraw();
-    println("building demolished");
+    //println("building demolished");
   }
 }    

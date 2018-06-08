@@ -6,13 +6,12 @@ ArrayList<Person> people=new ArrayList<Person>();
 int structureID=0;//this is the Nth structure 
 int xcor, ycor;//coordinate tracking system
 int buildingType;
-int time = 0;
+int time=0;//big time var
 PFont f;
 PGraphics pg;
 PGraphics ab;
 boolean menuCond=true;
 Building interact;
-
 
 void setup() {
   size(1024, 768);
@@ -25,6 +24,16 @@ void setup() {
 
   f = createFont("Arial", 16, true);
   pg=createGraphics(400, 400);
+  textFont(f, 16);
+  fill(0);
+  textAlign(LEFT);
+  text("City Simulation", 0, 25);
+
+  textAlign(LEFT);
+  text("Add people", 0, 100);
+  text("Road", 0, 150);
+  text("Residence", 0, 200);
+  movePeople();
 }
 void genWorld() {
   int seedX=(int) random(150, 250);
@@ -69,8 +78,7 @@ void buildingConstructor() {
           structures.add(b);
           b.drawBuilding();
           b.addPeople(40);
-        }
-        else {
+        } else {
           b.demolishBuilding();
         }
         Building d=new Building(structures.size(), i.getxpos()+i.getWidth(), consY, rand, 60);//constructs building on other side   
@@ -79,8 +87,7 @@ void buildingConstructor() {
           structures.add(d);
           d.drawBuilding();
           d.addPeople(40);
-        }
-        else {
+        } else {
           b.demolishBuilding();
         }
         consY+=40;
@@ -88,63 +95,59 @@ void buildingConstructor() {
     }
   }
 }
-//}
-void draw() {
-  textFont(f, 16);
-  fill(0);
-  textAlign(LEFT);
-  text("City Simulation", 0, 25);
 
-  textAlign(LEFT);
-  text("Add people", 0, 100);
-  text("Road", 0, 150);
-  text("Residence", 0, 200);
-  //pg.beginDraw();
-  movePeople();
+void draw() {
+  time++;
+
 }
 void mouseClicked() {//has all the menu instructions
-  
+  //clear();
+
   ab=createGraphics(150, 500);
-  if( mouseY>300 && mouseX<250 && mouseY<400) {
-          println("adding...");
-          interact.addPeople(20);
-          statMenu(interact);
-          
-        }
-   else if(mouseY>200 && mouseX<250 && mouseY<300) {
-     interact.demolishBuilding();
-   }
-   else {
+  if ( mouseY>300 && mouseX<100 && mouseY<350) {
+    println("adding...");
+    interact.addPeople(20);
+    statMenu(interact);//updates stat meny
+  } else if (mouseY>200 && mouseX<100 && mouseY<300) {
+    interact.demolishBuilding();
+    ab.beginDraw();
+    ab.background(0);
+    ab.fill(0);
+    ab.endDraw();
+  } else if (mouseY >350 && mouseX<100 && mouseY<400) {
+    interact.statsWindow();
+    }
+  else {
     for (Building str : structures) {
-     if (abs(str.getxpos()-mouseX)<str.getSize() && abs(str.getypos()-mouseY)<str.getSize()) {
+      if (abs(str.getxpos()-mouseX)<str.getSize() && abs(str.getypos()-mouseY)<str.getSize()) {
         println(str.getpop());//this function allows us to use the menu (which will be on the upper left corner), and get stats, modify the population etc.
         interact=str;
         statMenu(interact);
-        
-     }
+      }
     }
-        //mousePressed(); 
+    //mousePressed();
   }
 }
 void statMenu(Building str) {
   f = createFont("Arial", 16, true);
-        PFont g=createFont("Arial", 40, true);
-        ab.beginDraw();
-        ab.background(255);
-        ab.textFont(f, 16);
-        ab.fill(0);
-        ab.textAlign(LEFT);
-        ab.text("Stats for building"+str.getID(), 0, 16);
-        ab.text("remove building", 0, 45);
-        ab.text("population"+str.getpop(), 0, 60);
-        ab.text("capacity"+str.getCap(), 0, 100);
-        ab.text("add people",0,120);
-        ab.textFont(g, 40);
-        ab.text("Exit editor", 0, 484);
-        ab.endDraw();
-        image(ab, 0, 250);
-        menuCond=false;
-   
+  PFont g=createFont("Arial", 40, true);
+  ab.beginDraw();
+  ab.background(255);
+  ab.textFont(f, 16);
+  ab.fill(0);
+  ab.textAlign(LEFT);
+  ab.text("Stats for building "+str.getID(), 0, 16);
+  ab.text("remove building", 0, 45);
+  ab.text("building type: "+str.getType(),0,60);
+  ab.text("population"+str.getpop(), 0, 75);
+  ab.text("capacity"+str.getCap(), 0, 100);
+  ab.text("add people", 0, 120);
+  ab.text("manage people",0,140);
+  ab.textFont(g, 40);
+  ab.text("Exit editor", 0, 484);
+  ab.endDraw();
+  image(ab, 0, 250);
+  menuCond=false;
 }
 //checks to see if there is something occupying the current space
 boolean cityCheck() {
@@ -167,9 +170,9 @@ boolean cityCheck() {
       //  ret=false;
       //}
       //if the coordinates of the road are within size of the building-- first lets check the x axis road
-     if(!(ster.vertical()) && this.getYPos() < ster.getypos() && this.getYPos() + 60 > ster.getypos()) {
-         return false;
-         }
+      if (!(ster.vertical()) && this.getYPos() < ster.getypos() && this.getYPos() + 60 > ster.getypos()) {
+        return false;
+      }
       if (this.getXPos() == ster.getxpos() || this.getYPos() == ster.getypos() || abs(this.getXPos() -ster.getxpos()) <60 || abs(this.getYPos()- ster.getypos()) <60) {
         ret = false;
       }
@@ -178,7 +181,7 @@ boolean cityCheck() {
       println("failb");
       ret=false;
     } else {
-      
+
       ret = true;
     }
   }
@@ -212,8 +215,11 @@ void menu() {
   }
 }
 
-void movePeople(){
-    for (Person p : people){
-      p.wayfinder(structures.get(((int)random(0,structures.size()))));
+void movePeople() {
+  for (Person p : people) {
+    if (p.go()) {
+      p.wayfinder(structures.get(((int)random(0, structures.size()))));//goes to a random destination
+      p.drawPeople();//animates them
     }
   }
+}

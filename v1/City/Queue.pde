@@ -1,6 +1,6 @@
 public class Queue<T>
 {
-  //this is a modified queue. IF the queue is full, it will act like a normal queue.
+ /* //this is a modified queue. IF the queue is full, it will act like a normal queue.
   //However, if the queue is empty, items will be able to jump up to the closest one the car is able to. In short, with heavy traffic, this acts like a queue, but 
   //in times of lighter traffic, cars can jump!
   //instance variables
@@ -59,6 +59,23 @@ public class Queue<T>
     return _front.getValue();
 
   }
+  public T setCargo( T newCargo ) {
+  T foo = getCargo();
+  _cargo = newCargo;
+  return foo;
+    }
+
+    public DLLNode<T> setNext( DLLNode<T> newNext ) {
+  DLLNode<T> foo = getNext();
+  _nextNode = newNext;
+  return foo;
+    }
+
+    public DLLNode<T> setPrev( DLLNode<T> newPrev ) {
+  DLLNode<T> foo = getPrev();
+  _prevNode = newPrev;
+  return foo;
+    }
 
 
   /******************************************
@@ -67,7 +84,7 @@ public class Queue<T>
    * Move front element to end, x times. (x=random int)
    *  ( 0 <= x < queue size - 1 )
    ******************************************/
-  public void sample () 
+  /*public void sample () 
   {
     int cycles = (int)( _size * Math.random() );
     for( int i = 0; i < cycles; i++ )
@@ -92,5 +109,5 @@ public class Queue<T>
       tmp = tmp.getNext();
     }
     return foo;
-  }//end toString()
+  }//end toString()*/
 }

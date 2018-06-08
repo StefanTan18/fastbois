@@ -10,11 +10,11 @@ class Road extends Building {
   boolean go;//whether or not the queue is moving forward(there is a STOP gate, preventing traffic from moving forward in the queue
   int num_intersections;//returns the number of times that the Queue has to "break"
   LLNode<Transportation> currently_occupied;//stores traffic data
-  Queue lane;//stores cars, moves them up
+  //Queue lane;//stores cars, moves them up
   Road(int width) {//constructs a road of specified width. Wider==higher capacity
     this.width=width;
     capacity=width;//governs capacity of road(per 10 pixels)
-    lane=new Queue(capacity);
+    //lane=new Queue(capacity);
     
     
   }
@@ -82,7 +82,7 @@ class Road extends Building {
   }
   int trafficLevel() {//returns how "full" each lane is
     return 0;
-  }
+  }/*
   //adds to our modified queue!
   boolean add(Transportation p) {
     if (!(lane.enqueue(p))) {
@@ -104,5 +104,5 @@ class Road extends Building {
   }
   int allocateLane() {
     return 1;
-  }
+  }*/
 }
