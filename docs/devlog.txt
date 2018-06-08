@@ -10,14 +10,12 @@ A House of Cards
 ------------------------------------------
 OBSTACLES OVERCOME
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+We were able to make sure the buildings don't overlap with roads or other buildings.
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -We were unable to figure out how to reset the background if the background was made randomly and as a result a trail is left behind the moving things.
-COOL STUFF LEARNED
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
--We learned how to PGraphics to help us in Processing.
-
+-The people would disappear for a reason we were not able to find out.
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 -We're gonna implement the GUI in phase 1 beacuse the program won't work without it.
