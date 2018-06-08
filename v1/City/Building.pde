@@ -92,4 +92,5 @@ PGraphics pg;//gui representation
     pg.endDraw();
     println("building demolished");
   }
+
 }

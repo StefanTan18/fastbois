@@ -46,17 +46,17 @@ class Person {
   }
   
   Road nearestYRoad(){
-  Road nearest;
+  Road nearest = new Road(5);
   int min = 1000000;
   for(Building a: structures){
    if (a.getType() == 100){
      if (min > (int) dist(a.getxpos(), a.getxpos(), address.getxpos(), address.getypos())){
        min = (int) dist(a.getxpos(), a.getxpos(), address.getxpos(), address.getypos());
-       nearest = a;
+       nearest = (Road) a;
        }
        }
        }
-       while(this.xcor != nearest.getXPos()){
+       while(this.xcor != nearest.getxpos()){
        this.moveXRight();
        this.drawPeople();
        }
@@ -64,30 +64,32 @@ class Person {
       }
        
  Road nearestXRoad(){
-   Road nearest;
+   Road nearest = new Road(5);
    int min = 1000000;
    for(Building a: structures){
-   if (a.getType() == 100 && !a.vertical()){
-     if (min > (int) dist(a.getXPos(), a.getYPos(), this.xpos, this.ypos)){
-       min = (int) dist(a.getXPos(), a.getYPos(), this.xpos, this.ypos);
-       nearest = a;
+   if (a.getType() == 100){
+     if(! ((Road)a).vertical()){
+     if (min > (int) dist(a.getxpos(), a.getypos(), this.xcor, this.ycor)){
+       min = (int) dist(a.getxpos(), a.getypos(), this.xcor, this.ycor);
+       nearest = (Road) a;
        }
        }
        }
+   }
        return nearest;
        }
   
   boolean wayfinder(Building dest){
   this.nearestYRoad(); 
-  while(this.ycor != dest.getYPos()){
-  if (this.ycor < dest.getYPos()){
+  while(this.ycor != dest.getypos()){
+  if (this.ycor < dest.getypos()){
           this.moveYDown(); 
        }
   else {
   this.moveYUp(); }
-  while(abs(this.xcor - dest.getXPos()) > 60){
-  if (this.ycor == nearestXRoad().getYPos()){
-      if (this.xcor < dest.getXPos()){
+  while(abs(this.xcor - dest.getxpos()) > 60){
+  if (this.ycor == nearestXRoad().getypos()){
+      if (this.xcor < dest.getxpos()){
           this.moveXRight(); }
       else{
           this.moveXLeft(); }
