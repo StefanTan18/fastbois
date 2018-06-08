@@ -38,7 +38,7 @@ class Person {
   void moveXLeft(){
   xcor--;
   }
-  void moveYUp{
+  void moveYUp(){
   ycor++;
   }
   void moveYDown(){
@@ -50,8 +50,8 @@ class Person {
   int min = 1000000;
   for(Building a: structures){
    if (a.getType() == 100){
-     if (min > (int) dist(a.getXPos(), a.getYPos(), address.getXPos(), address.getYPos())){
-       min = (int) dist(a.getXPos(), a.getYPos(), address.getXPos(), address.getYPos();
+     if (min > (int) dist(a.getxpos(), a.getxpos(), address.getxpos(), address.getypos())){
+       min = (int) dist(a.getxpos(), a.getxpos(), address.getxpos(), address.getypos());
        nearest = a;
        }
        }
