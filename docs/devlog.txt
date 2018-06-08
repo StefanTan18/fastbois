@@ -13,10 +13,10 @@ OBSTACLES OVERCOME
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+-We were unable to figure out how to reset the background if the background was made randomly and as a result a trail is left behind the moving things.
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+-We learned how to PGraphics to help us in Processing.
 
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -64,4 +64,19 @@ yyyy-mm-dd
 2018-6-1:
 <James> :: Driver for trio programming in class. Decided that the road should be set up first in a grid system before the buildings.
 <Stefan> :: Pointed out problems that would arise from the way that we decided to implemented before.
-<Shafali> :: Added some improvements to the Road class. 
+<Shafali> :: Added some improvements to the Road class.
+
+2018-6-4:
+<James> :: Driver for trio programming in class.
+<Stefan> :: Fixed issues that appeared that went unnoticed before.
+<Shafali> :: Suggested ways to robustify the code.
+
+2018-6-6:
+<James> :: Driver for trio programming in class.
+<Stefan> :: Started working on the Person class.
+<Shafali> :: Robustified the Road class.
+
+2018-6-7:
+<James> :: Added new things such as showing the population of a building.
+<Stefan> :: Robustified and cleaned up the code.
+<Shafali> :: Robustified and cleaned up the code.
