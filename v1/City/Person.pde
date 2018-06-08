@@ -33,16 +33,20 @@ class Person {
     ycor=newAddress.getypos()+randomY;
   }
   void moveXRight(){
-  xcor++;
+  this.xcor++;
+  this.drawPeople();
   }
   void moveXLeft(){
-  xcor--;
+  this.xcor--;
+  this.drawPeople();
   }
   void moveYUp(){
-  ycor++;
+  this.ycor++;
+  this.drawPeople();
   }
   void moveYDown(){
-  ycor--;
+  this.ycor--;
+  this.drawPeople();
   }
   
   Road nearestYRoad(){
@@ -58,7 +62,6 @@ class Person {
        }
        while(this.xcor != nearest.getxpos()){
        this.moveXRight();
-       this.drawPeople();
        }
        return nearest; 
       }

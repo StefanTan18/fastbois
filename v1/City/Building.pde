@@ -5,7 +5,7 @@ PGraphics pg;//gui representation
   protected int xpos;//location of building
   protected int ypos,size;//location,size of building
   protected int cap;//capacity of building
-  protected int typeCode;//type of building(to be used in future)0--Residential, 100--Road, 2--Commercial, 3--park
+  protected int typeCode;//type of building(to be used in future)0--Residential, 100--Road, 2--Commercial, 3--park,4--school
   protected String buildingName;//name of building(if its a landmark)
   Building() {
     this.id=0;
@@ -18,20 +18,18 @@ PGraphics pg;//gui representation
     this.id = id;
     this.xpos = xcor;
     this.ypos= ycor;
-    //pg=createGraphics(40,40);
-    cap=300;
+    pg=createGraphics(40,40);
   }
   Building(int id, int xcor, int ycor, int typeCode, int size) {
     this(id,xcor,ycor);
-    if(typeCode==1 || (typeCode>3 && typeCode!=100)) {
-      this.typeCode=0;
+    if(typeCode==1 || (typeCode<4 && typeCode!=100)) {
+    this.typeCode=typeCode;
     }
     else {
-      this.typeCode=typeCode;
+      this.typeCode=0;
     }
     this.size=size;
     pg=createGraphics(size,size);
-    cap=300;
   }
   
   void drawBuilding() {//makes a building
@@ -69,16 +67,16 @@ PGraphics pg;//gui representation
     return cap;
   }
   void addPeople(int population) {
-    if(typeCode ==0) {
+    if (typeCode ==0){
     for(int i=0; i< population; i++) {
       Person newGuy=new Person();
       residents.add(newGuy);
+      people.add(newGuy);
       newGuy.setAddress(this);
-      newGuy.drawPeople();
     }
     }
-    
   }
+ 
   void info() {
   }
   void setcap() {//sets capactiy of building
@@ -92,5 +90,4 @@ PGraphics pg;//gui representation
     pg.endDraw();
     println("building demolished");
   }
-
-}
+}    

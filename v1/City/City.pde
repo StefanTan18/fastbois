@@ -1,10 +1,12 @@
 
 //generates city, and GUI Interface
 ArrayList<Building> structures=new ArrayList<Building>();
+ArrayList<Person> people=new ArrayList<Person>();
 
 int structureID=0;//this is the Nth structure 
 int xcor, ycor;//coordinate tracking system
 int buildingType;
+int time = 0;
 PFont f;
 PGraphics pg;
 PGraphics ab;
@@ -98,6 +100,7 @@ void draw() {
   text("Road", 0, 150);
   text("Residence", 0, 200);
   //pg.beginDraw();
+  movePeople();
 }
 void mouseClicked() {//has all the menu instructions
   
@@ -120,12 +123,7 @@ void mouseClicked() {//has all the menu instructions
         
      }
     }
-        //mousePressed();
- 
-          
-    
-      
-    
+        //mousePressed(); 
   }
 }
 void statMenu(Building str) {
@@ -168,6 +166,10 @@ boolean cityCheck() {
       //  println("failb");
       //  ret=false;
       //}
+      //if the coordinates of the road are within size of the building-- first lets check the x axis road
+     if(!(ster.vertical()) && this.getYPos() < ster.getypos() && this.getYPos() + 60 > ster.getypos()) {
+         return false;
+         }
       if (this.getXPos() == ster.getxpos() || this.getYPos() == ster.getypos() || abs(this.getXPos() -ster.getxpos()) <60 || abs(this.getYPos()- ster.getypos()) <60) {
         ret = false;
       }
@@ -209,3 +211,9 @@ void menu() {
     text("fill city", 0, 125);
   }
 }
+
+void movePeople(){
+    for (Person p : people){
+      p.wayfinder(structures.get(((int)random(0,structures.size()))));
+    }
+  }
